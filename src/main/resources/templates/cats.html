@@ -16,7 +16,7 @@
             <th>birthday</th>
         </thead>
         <tbody>
-            <tr data-th-each="cat : ${allCats}">
+            <tr data-th-each="cat : ${allOfCat}">
                 <td data-th-text="${cat.id}"></td>
                 <td data-th-text="${cat.name}"></td>
                 <td data-th-text="${cat.age}"></td>
@@ -38,7 +38,7 @@
         <th>birthday</th>
         </thead>
         <tbody>
-        <tr data-th-each="tiger : ${allTigers}">
+        <tr data-th-each="tiger : ${allOfTiger}">
             <td data-th-text="${tiger.id}"></td>
             <td data-th-text="${tiger.name}"></td>
             <td data-th-text="${tiger.age}"></td>

@@ -15,12 +15,7 @@ public class CatController extends GenericController<Cat> {
     }
 
 
-    @GetMapping(value = "findAll")
-    public String vseKotiki(Model model) {
 
-        model.addAttribute("allCats", service.findAll());
-        return "cats";
-    }
 
     ///////////////
     public void testMethod() {

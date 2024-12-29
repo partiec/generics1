@@ -14,12 +14,7 @@ public class TigerController extends GenericController<Tiger> {
         super(tigerRepository);
     }
 
-    @GetMapping(value = "findAll")
-    public String naitiTigrov(Model model) {
 
-        model.addAttribute("allTigers", service.findAll());
-        return "cats";
-    }
 
     ///////////////
     public void testMethod() {
