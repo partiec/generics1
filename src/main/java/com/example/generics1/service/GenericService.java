@@ -9,41 +9,41 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-public abstract class GenericService<CatType extends GenericEntity<CatType>> {
+public abstract class GenericService<C extends GenericEntity<C>> {
 
-    private final GenericRepository<CatType> repository;
+    private final GenericRepository<C> repository;
 
 
-    public GenericService(GenericRepository<CatType> repository) {
+    public GenericService(GenericRepository<C> repository) {
         this.repository = repository;
     }
 
 
-    public Page<CatType> getPage(Pageable pageable) {
+    public Page<C> getPage(Pageable pageable) {
         return this.repository.findAll(pageable);
     }
 
-    public CatType get(Long id) {
+    public C get(Long id) {
         return this.repository.findById(id).orElseThrow();
     }
 
     //////////////////////
-    public List<CatType> findAll() {
+    public List<C> findAll() {
         return repository.findAll();
     }
     //////////////////////
 
     @Transactional
-    public CatType update(CatType updatedCatType) {
-        CatType dbCatType = this.get(updatedCatType.getId());
-        dbCatType.update(updatedCatType);
-        return this.repository.save(dbCatType);
+    public C update(C updatedC) {
+        C dbC = this.get(updatedC.getId());
+        dbC.update(updatedC);
+        return this.repository.save(dbC);
     }
 
     @Transactional
-    public CatType create(CatType newDomain) {
-        CatType dbCatType = this.get(newDomain.getId());
-        return this.repository.save(dbCatType);
+    public C create(C newDomain) {
+        C dbC = this.get(newDomain.getId());
+        return this.repository.save(dbC);
     }
 
     @Transactional

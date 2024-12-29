@@ -5,11 +5,11 @@ package com.example.generics1.model;
     Любой, кто реализует GenericEntity<с типом самого себя > -
     сам станет таким<с типом самого себя>.
 */
-public interface GenericEntity<CatType> {
+public interface GenericEntity<C> {
 
-    void update(CatType source);
+    void update(C source);
 
     Long getId();
 
-    CatType createNewInstance();
+    C createNewInstance();
 }

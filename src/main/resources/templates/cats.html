@@ -5,7 +5,7 @@
     <title>Cats</title>
 </head>
 <body>
-<form method="get" action="/api/cat">
+<form method="get" action="/api/cat/findAll">
     <button type="submit">show all cats</button>
     <table border="1">
         <thead>
@@ -23,6 +23,28 @@
                 <td data-th-text="${cat.description}"></td>
                 <td data-th-text="${cat.birthday}"></td>
             </tr>
+        </tbody>
+    </table>
+</form>
+<hr>
+<form method="get" action="/api/tiger/findAll">
+    <button type="submit">show all tigers</button>
+    <table border="1">
+        <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>age</th>
+        <th>description</th>
+        <th>birthday</th>
+        </thead>
+        <tbody>
+        <tr data-th-each="tiger : ${allTigers}">
+            <td data-th-text="${tiger.id}"></td>
+            <td data-th-text="${tiger.name}"></td>
+            <td data-th-text="${tiger.age}"></td>
+            <td data-th-text="${tiger.description}"></td>
+            <td data-th-text="${tiger.birthday}"></td>
+        </tr>
         </tbody>
     </table>
 </form>

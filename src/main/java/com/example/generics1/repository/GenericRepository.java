@@ -9,6 +9,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 /*
     В @NoRepositoryBean-репозитории указываем <типКота - extends свою же абстракцию<со своим же типом>>. Хотя абстракция для котов - интерфейс, все равно extends !!!
  */
-public interface GenericRepository<CatType extends GenericEntity<CatType>>
-        extends JpaRepository<CatType, Long>, JpaSpecificationExecutor<CatType> {
+public interface GenericRepository<C extends GenericEntity<C>>
+        extends JpaRepository<C, Long>, JpaSpecificationExecutor<C> {
 }

@@ -1,5 +1,6 @@
-package com.example.generics1.model;
+package com.example.generics1.model.cat;
 
+import com.example.generics1.model.GenericEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 /*
-    Tiger реализует GenericEntity<с типом самого себя> и сам становится
-    GenericEntity<Tiger>.
+    Cat реализует GenericEntity<с типом самого себя> и
+    становится GenericEntity<Cat>.
  */
-public class Tiger implements Serializable, GenericEntity<Tiger> {
-
+public class Cat implements Serializable, GenericEntity<Cat> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,25 +28,24 @@ public class Tiger implements Serializable, GenericEntity<Tiger> {
     @CreationTimestamp
     private Date birthday;
 
+
     @Override
-    public void update(Tiger source) {
+    public void update(Cat source) {
         this.name = source.getName();
         this.age = source.getAge();
         this.description = source.getDescription();
         this.birthday = source.getBirthday();
     }
 
-
 //    public Long getId() {
 //        return this.id;
 //    }
 
-
     @Override
-    public Tiger createNewInstance() {
-        Tiger newTiger = new Tiger();
-        newTiger.update(this);
-        return newTiger;
+    public Cat createNewInstance() {
+        Cat newCat = new Cat();
+        newCat.update(this);
+        return newCat;
     }
 
 

@@ -8,32 +8,43 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-public abstract class GenericController<CatType extends GenericEntity<CatType>> {
+public abstract class GenericController<C extends GenericEntity<C>> {
 
-    protected final GenericService<CatType> service;
+    protected final GenericService<C> service;
 
-    public GenericController(GenericRepository<CatType> repository) {
-        service = new GenericService<CatType>(repository) {
+    public GenericController(GenericRepository<C> repository) {
+        service = new GenericService<C>(repository) {
         };
     }
 
+
+    /*
+        Каждый метод НАСЛЕДУЕТСЯ контроллером-наследником
+        вместе с аннотацией @GetMapping, следовательно, в каждом
+        контроллере у методов будут одинаковые КОНЦОВКИ url. Надо
+        внимательно проследить, чтобы НАЧАЛА у url были
+        РАЗНЫЕ. Если по недосмотру окажется, что url одинаковые, то
+        получим ошибку типа:
+        There is already 'имяБина' bean method...
+        (Этот метод уже принадлежит бину 'такому-то'...)
+     */
     @GetMapping("")
-    public ResponseEntity<Page<CatType>> getPage(Pageable pageable) {
+    public ResponseEntity<Page<C>> getPage(Pageable pageable) {
         return ResponseEntity.ok(service.getPage(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CatType> getOne(@PathVariable Long id) {
+    public ResponseEntity<C> getOne(@PathVariable Long id) {
         return ResponseEntity.ok(service.get(id));
     }
 
     @PutMapping("")
-    public ResponseEntity<CatType> update(@RequestBody CatType updated) {
+    public ResponseEntity<C> update(@RequestBody C updated) {
         return ResponseEntity.ok(service.update(updated));
     }
 
     @PostMapping("")
-    public ResponseEntity<CatType> create(@RequestBody CatType created) {
+    public ResponseEntity<C> create(@RequestBody C created) {
         return ResponseEntity.ok(service.create(created));
     }
 
