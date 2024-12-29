@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/generic_cats_db
+    username: rolek
+    password: 123
+    driver-class-name: org.postgresql.Driver

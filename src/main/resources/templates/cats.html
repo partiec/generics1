@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cats</title>
+</head>
+<body>
+<form method="get" action="/api/cat">
+    <button type="submit">show all cats</button>
+    <table border="1">
+        <thead>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>description</th>
+            <th>birthday</th>
+        </thead>
+        <tbody>
+            <tr data-th-each="cat : ${allCats}">
+                <td data-th-text="${cat.id}"></td>
+                <td data-th-text="${cat.name}"></td>
+                <td data-th-text="${cat.age}"></td>
+                <td data-th-text="${cat.description}"></td>
+                <td data-th-text="${cat.birthday}"></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
